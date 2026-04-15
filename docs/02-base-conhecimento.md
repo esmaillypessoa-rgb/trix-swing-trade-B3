@@ -1,55 +1,70 @@
-# Base de Conhecimento
+# 📊 Base de Conhecimento
 
 ## Dados Utilizados
 
-Descreva se usou os arquivos da pasta `data`, por exemplo:
-
 | Arquivo | Formato | Utilização no Agente |
 |---------|---------|---------------------|
-| `historico_atendimento.csv` | CSV | Contextualizar interações anteriores |
-| `perfil_investidor.json` | JSON | Personalizar recomendações |
-| `produtos_financeiros.json` | JSON | Sugerir produtos adequados ao perfil |
-| `transacoes.csv` | CSV | Analisar padrão de gastos do cliente |
-
-> [!TIP]
-> **Quer um dataset mais robusto?** Você pode utilizar datasets públicos do [Hugging Face](https://huggingface.co/datasets) relacionados a finanças, desde que sejam adequados ao contexto do desafio.
+| `historico_atendimento.csv` | CSV | Histórico de decisões do agente (sinais e resultados) |
+| `perfil_investidor.json` | JSON | Definição de perfil de risco e parâmetros de trading |
+| `produtos_financeiros.json` | JSON | Contextualização dos instrumentos utilizados (ações, ETFs, derivativos) |
+| `transacoes.csv` | CSV | Histórico de operações realizadas (backtest e performance) |
 
 ---
 
 ## Adaptações nos Dados
 
-> Você modificou ou expandiu os dados mockados? Descreva aqui.
+Os dados foram adaptados do modelo original do desafio para refletir um cenário real de **trading quantitativo**, incluindo:
 
-[Sua descrição aqui]
+- Substituição do contexto bancário por **operações de swing trade**
+- Inclusão de:
+  - Ativos da B3 (PETR4, VALE3, ITUB4, etc.)
+  - Resultados de operações (win/loss)
+  - Percentual de retorno
+  - Tempo de holding
+- Estruturação dos dados para permitir:
+  - Backtesting
+  - Avaliação de performance
+  - Uso em modelos de machine learning (futuro)
 
 ---
 
 ## Estratégia de Integração
 
 ### Como os dados são carregados?
-> Descreva como seu agente acessa a base de conhecimento.
 
-[ex: Os JSON/CSV são carregados no início da sessão e incluídos no contexto do prompt]
+Os dados são carregados localmente a partir da pasta `data/` utilizando a biblioteca `pandas` (CSV) e `json`.
 
-### Como os dados são usados no prompt?
-> Os dados vão no system prompt? São consultados dinamicamente?
+- CSV → carregados como DataFrame
+- JSON → carregados como dicionários Python
 
-[Sua descrição aqui]
+Exemplo:
 
----
+```python
+import pandas as pd
+import json
 
-## Exemplo de Contexto Montado
+transacoes = pd.read_csv("data/transacoes.csv")
 
-> Mostre um exemplo de como os dados são formatados para o agente.
+with open("data/perfil_investidor.json") as f:
+    perfil = json.load(f)
 
-```
-Dados do Cliente:
-- Nome: João Silva
-- Perfil: Moderado
-- Saldo disponível: R$ 5.000
+### Exemplo de Contexto Montado
+Perfil do Trader:
+- Nome: Esmailly Pessoa
+- Perfil: Moderado-agressivo
+- Capital para trade: R$ 20.000
+- Risco por operação: 2%
 
-Últimas transações:
-- 01/11: Supermercado - R$ 450
-- 03/11: Streaming - R$ 55
-...
-```
+Ativos monitorados:
+- PETR4
+- VALE3
+- ITUB4
+
+Últimas operações:
+- PETR4: +5.23% (5 dias)
+- VALE3: +3.67% (4 dias)
+- ITUB4: -2.75% (3 dias)
+
+Contexto atual:
+- Mercado com tendência de alta em commodities
+- Fluxo estrangeiro positivo
