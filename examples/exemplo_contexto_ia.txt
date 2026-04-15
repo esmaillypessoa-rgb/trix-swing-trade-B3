@@ -1,0 +1,18 @@
+Contexto de análise:
+
+Perfil do trader:
+- Perfil: moderado-agressivo
+- Capital: R$ 20.000
+- Risco por operação: 2%
+
+Ativos com sinal de compra:
+- PETR4 (TRIX positivo e crescente)
+- VALE3 (tendência de alta)
+
+Contexto macro:
+- Alta no preço do petróleo
+- Commodities em valorização
+- Fluxo estrangeiro positivo
+
+Objetivo:
+Classificar as melhores oportunidades de swing trade com base nos dados acima.
