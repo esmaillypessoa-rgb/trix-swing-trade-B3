@@ -1,20 +1,69 @@
-# Exemplos e Referências
+# 📂 Exemplos e Referências
 
-Esta pasta contém exemplos de implementação para cada etapa do desafio.
+Esta pasta contém exemplos práticos de execução do **Agente de Swing Trade com IA (TRIX AI Trader)**.
 
-## Vídeos de Referência
+O objetivo é demonstrar, de forma clara, como cada etapa do projeto funciona na prática.
 
-> 🎬 Em breve serão disponibilizados vídeos demonstrando a implementação completa de cada etapa, com foco no raciocínio por trás de cada decisão.
+---
+
+## 🎬 Vídeos de Referência
 
 | Etapa | Descrição | Link |
-|-------|-----------|------|
-| Documentação | Como definir o caso de uso e arquitetura | [em breve] |
-| Base de Conhecimento | Como usar os dados mockados | [em breve] |
-| Prompts | Como criar prompts eficazes | [em breve] |
-| Aplicação | Como criar o chatbot funcional | [em breve] |
-| Métricas | Como avaliar seu agente | [em breve] |
-| Pitch | Como apresentar sua solução | [em breve] |
+|------|----------|------|
+| Documentação | Definição do agente e arquitetura | [em breve] |
+| Base de Conhecimento | Uso dos dados de trading | [em breve] |
+| Prompts | Engenharia de prompts aplicada | [em breve] |
+| Aplicação | Execução do agente | [em breve] |
+| Métricas | Avaliação e backtest | [em breve] |
+| Pitch | Apresentação final | [em breve] |
 
-## Exemplo de Implementação Simples
+---
 
-Confira na pasta `src/` um exemplo básico de estrutura de aplicação usando Streamlit.
+## 📊 Exemplos Disponíveis
+
+### 1. 📈 Resultado do Agente
+
+Arquivo: `exemplo_resultado_agente.csv`
+
+Contém a saída real do agente após análise dos ativos.
+
+---
+
+### 2. 📉 Backtest
+
+Arquivo: `exemplo_backtest.csv`
+
+Contém o histórico de operações simuladas com base no TRIX.
+
+---
+
+### 3. 🧠 Input de Análise IA
+
+Arquivo: `exemplo_contexto_ia.txt`
+
+Exemplo do contexto enviado ao modelo de IA para análise.
+
+---
+
+### 4. 📊 Ranking de Ativos
+
+Arquivo: `exemplo_ranking.csv`
+
+Ranking final gerado pelo agente com score de decisão.
+
+---
+
+## 🧪 Como Usar
+
+1. Execute o agente:
+
+```bash
+python src/app.py
+
+2. Compare os resultados gerados com os arquivos desta pasta
+
+3. Utilize os exemplos para:
+
+Validação
+Demonstração
+Apresentação do projeto
