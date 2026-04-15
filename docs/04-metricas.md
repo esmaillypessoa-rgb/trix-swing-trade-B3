@@ -1,71 +1,145 @@
-# Avaliação e Métricas
+# 📊 Avaliação e Métricas
 
 ## Como Avaliar seu Agente
 
-A avaliação pode ser feita de duas formas complementares:
+A avaliação do agente de swing trade deve considerar duas dimensões:
 
-1. **Testes estruturados:** Você define perguntas e respostas esperadas;
-2. **Feedback real:** Pessoas testam o agente e dão notas.
+1. **Testes estruturados:** Validação dos sinais técnicos e coerência das análises;
+2. **Avaliação prática:** Teste com usuários e comparação com resultados reais de mercado.
 
 ---
 
-## Métricas de Qualidade
+## 📈 Métricas de Qualidade
 
 | Métrica | O que avalia | Exemplo de teste |
 |---------|--------------|------------------|
-| **Assertividade** | O agente respondeu o que foi perguntado? | Perguntar o saldo e receber o valor correto |
-| **Segurança** | O agente evitou inventar informações? | Perguntar algo fora do contexto e ele admitir que não sabe |
-| **Coerência** | A resposta faz sentido para o perfil do cliente? | Sugerir investimento conservador para cliente conservador |
+| **Assertividade Técnica** | O sinal gerado foi correto? | Sinal de compra seguido de movimento de alta |
+| **Segurança (Anti-Alucinação)** | O agente evitou inventar dados? | Pergunta fora do dataset retorna resposta neutra |
+| **Coerência com Estratégia** | O agente respeita regras do TRIX? | Não gerar compra com TRIX negativo |
+| **Consistência** | O agente mantém padrão de decisão? | Mesmo cenário gera decisões semelhantes |
+| **Aderência ao Perfil** | Respeita gestão de risco do perfil? | Não sugerir operações fora do risco definido |
+
+---
 
 > [!TIP]
-> Peça para 3-5 pessoas (amigos, família, colegas) testarem seu agente e avaliarem cada métrica com notas de 1 a 5. Isso torna suas métricas mais confiáveis! Caso use os arquivos da pasta `data`, lembre-se de contextualizar os participantes sobre o **cliente fictício** representado nesses dados.
+> Peça para 3-5 pessoas com conhecimento básico em mercado testarem o agente e avaliarem as respostas.  
+> Para maior precisão, utilize também comparação com dados históricos (backtest).
 
 ---
 
-## Exemplos de Cenários de Teste
+## 🧪 Exemplos de Cenários de Teste
 
-Crie testes simples para validar seu agente:
+### Teste 1: Sinal de Compra
 
-### Teste 1: Consulta de gastos
-- **Pergunta:** "Quanto gastei com alimentação?"
-- **Resposta esperada:** Valor baseado no `transacoes.csv`
+- **Entrada:** Dados com TRIX positivo e cruzando média
+- **Resposta esperada:** Sinal de COMPRA
 - **Resultado:** [ ] Correto  [ ] Incorreto
 
-### Teste 2: Recomendação de produto
-- **Pergunta:** "Qual investimento você recomenda para mim?"
-- **Resposta esperada:** Produto compatível com o perfil do cliente
+---
+
+### Teste 2: Sinal de Venda
+
+- **Entrada:** TRIX negativo abaixo da média
+- **Resposta esperada:** Sinal de VENDA
 - **Resultado:** [ ] Correto  [ ] Incorreto
+
+---
 
 ### Teste 3: Pergunta fora do escopo
-- **Pergunta:** "Qual a previsão do tempo?"
-- **Resposta esperada:** Agente informa que só trata de finanças
-- **Resultado:** [ ] Correto  [ ] Incorreto
 
-### Teste 4: Informação inexistente
-- **Pergunta:** "Quanto rende o produto XYZ?"
-- **Resposta esperada:** Agente admite não ter essa informação
+- **Pergunta:** "Qual o preço do dólar amanhã?"
+- **Resposta esperada:**  
+  O agente informa que não realiza previsões futuras específicas
 - **Resultado:** [ ] Correto  [ ] Incorreto
 
 ---
 
-## Resultados
+### Teste 4: Dados insuficientes
 
-Após os testes, registre suas conclusões:
-
-**O que funcionou bem:**
-- [Liste aqui]
-
-**O que pode melhorar:**
-- [Liste aqui]
+- **Entrada:** Ativo sem histórico suficiente
+- **Resposta esperada:**  
+  "Dados insuficientes para análise confiável"
+- **Resultado:** [ ] Correto  [ ] Incorreto
 
 ---
 
-## Métricas Avançadas (Opcional)
+### Teste 5: Validação de risco
 
-Para quem quer explorar mais, algumas métricas técnicas de observabilidade também podem fazer parte da sua solução, como:
+- **Entrada:** Operação com risco acima do permitido
+- **Resposta esperada:**  
+  O agente rejeita ou alerta sobre o risco
+- **Resultado:** [ ] Correto  [ ] Incorreto
 
-- Latência e tempo de resposta;
-- Consumo de tokens e custos;
-- Logs e taxa de erros.
+---
 
-Ferramentas especializadas em LLMs, como [LangWatch](https://langwatch.ai/) e [LangFuse](https://langfuse.com/), são exemplos que podem ajudar nesse monitoramento. Entretanto, fique à vontade para usar qualquer outra que você já conheça!
+## 📉 Métricas Quantitativas (Backtest)
+
+| Métrica | Descrição |
+|--------|----------|
+| **Win Rate** | Percentual de operações vencedoras |
+| **Retorno Médio** | Média de retorno por trade |
+| **Drawdown Máximo** | Maior perda acumulada |
+| **Sharpe Ratio** | Retorno ajustado ao risco |
+| **Expectativa Matemática** | Valor esperado por operação |
+
+---
+
+## 📊 Exemplo de Resultado
+Total de Trades: 50
+Win Rate: 62%
+Retorno Médio: 2.8%
+Drawdown Máximo: -8%
+Expectativa: positiva
+
+
+---
+
+## 🧠 Avaliação Qualitativa
+
+### O que funcionou bem:
+
+- Sinais técnicos consistentes com o TRIX
+- Baixa incidência de falsos positivos
+- Respostas objetivas e sem alucinação
+- Boa integração entre análise técnica e contexto
+
+---
+
+### O que pode melhorar:
+
+- Integração com dados fundamentalistas reais
+- Maior sensibilidade em mercados laterais
+- Inclusão de stop loss dinâmico
+- Ajuste fino do período do TRIX
+
+---
+
+## 🔬 Métricas Avançadas (Opcional)
+
+Para evolução do projeto:
+
+- 📊 **Precision / Recall** para sinais de compra/venda  
+- 📈 **Curva de Equity**  
+- ⚡ **Latência da IA**  
+- 💰 **Custo por inferência (tokens)**  
+- 🤖 **Acurácia de modelos de Machine Learning (futuro)**  
+
+Ferramentas recomendadas:
+
+- Pandas / NumPy (análise)
+- Matplotlib (visualização)
+- LangFuse / LangWatch (monitoramento de LLM)
+
+---
+
+## 📌 Considerações Finais
+
+A avaliação deste agente vai além de respostas corretas.
+
+Ela envolve:
+
+- 📊 Performance real no mercado
+- 🧠 Consistência da lógica quantitativa
+- 🔐 Segurança contra alucinação
+
+O objetivo é garantir que o agente seja confiável, consistente e útil como ferramenta de apoio à decisão em swing trade.
