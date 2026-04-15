@@ -1,90 +1,119 @@
-🤖 Agente de Swing Trade com IA Generativa (B3)
-📌 Visão Geral
+# 🤖 Agente de Swing Trade com IA Generativa (B3)
 
-Este projeto implementa um Agente Inteligente de Swing Trade para a B3, capaz de:
+## 📌 Visão Geral
 
-📊 Identificar sinais técnicos com TRIX(8)
-🧾 Validar com análise fundamentalista
-🌎 Incorporar contexto macroeconômico global
-🧠 Utilizar IA Generativa para decisão assistida
-📉 Avaliar performance via backtest
-🎯 Objetivo
+Este projeto implementa um **Agente Inteligente de Swing Trade para a B3**, capaz de:
 
-Gerar diariamente uma lista de ativos com potencial de operação (compra/venda) com base em:
+- 📊 Identificar sinais técnicos com **TRIX(8)**
+- 🧾 Validar com análise fundamentalista
+- 🌎 Incorporar contexto macroeconômico global
+- 🧠 Utilizar IA Generativa para decisão assistida
+- 📉 Avaliar performance via backtest
 
-Cruzamento do indicador TRIX
-Confirmação por média móvel
-Filtros quantitativos e qualitativos
-⚙️ Estratégia Técnica
-📈 Sinal de Compra
-TRIX(8) > 0
-TRIX cruza acima da média móvel (8)
-📉 Sinal de Venda
-TRIX(8) < 0
-TRIX cruza abaixo da média móvel (8)
-🧠 Modelo de Decisão
+---
+
+## 🎯 Objetivo
+
+Gerar diariamente uma **lista de ativos com potencial de operação (compra/venda)** com base em:
+
+- Cruzamento do indicador TRIX
+- Confirmação por média móvel
+- Filtros quantitativos e qualitativos
+
+---
+
+## ⚙️ Estratégia Técnica
+
+### 📈 Sinal de Compra
+- TRIX(8) > 0  
+- TRIX cruza acima da média móvel (8)
+
+### 📉 Sinal de Venda
+- TRIX(8) < 0  
+- TRIX cruza abaixo da média móvel (8)
+
+---
+
+## 🧠 Modelo de Decisão
 
 Score final:
-
 Score = (Técnico * 0.4) + (Fundamentalista * 0.3) + (Macro * 0.3)
-🔬 Melhorias Avançadas
 
-✔ Filtro de liquidez
-✔ Backtest com dados reais
-✔ IA com controle de alucinação
-✔ Integração com notícias confiáveis
-✔ Arquitetura modular escalável
+---
 
-📁 Estrutura do Projeto
-lab-agente-financeiro/
+## 🔬 Melhorias Avançadas
+
+- ✔ Filtro de liquidez  
+- ✔ Backtest com dados reais  
+- ✔ IA com controle de alucinação  
+- ✔ Integração com notícias confiáveis  
+- ✔ Arquitetura modular escalável  
+
+---
+
+## 📁 Estrutura do Projeto
+ab-agente-financeiro/
 │
 ├── README.md
 │
 ├── data/
-│   ├── raw/                # Dados históricos (CSV reais)
-│   ├── processed/          # Dados tratados
-│   └── signals.csv         # Sinais gerados
+│ ├── raw/ # Dados históricos (CSV reais)
+│ ├── processed/ # Dados tratados
+│ └── signals.csv # Sinais gerados
 │
 ├── docs/
-│   ├── 01-documentacao-agente.md
-│   ├── 02-base-conhecimento.md
-│   ├── 03-prompts.md
-│   ├── 04-metricas.md
-│   └── 05-pitch.md
+│ ├── 01-documentacao-agente.md
+│ ├── 02-base-conhecimento.md
+│ ├── 03-prompts.md
+│ ├── 04-metricas.md
+│ └── 05-pitch.md
 │
 ├── src/
-│   ├── app.py              # Execução principal
-│   ├── data_fetch.py       # Coleta de dados
-│   ├── indicators.py       # Indicadores técnicos
-│   ├── signal_engine.py    # Geração de sinais
-│   ├── backtest.py         # Backtest
-│   ├── ranking.py          # Score final
-│   ├── macro.py            # Análise macro
-│   ├── fundamental.py      # Análise fundamentalista
-│   └── ai_engine.py        # IA Generativa
+│ ├── app.py # Execução principal
+│ ├── data_fetch.py # Coleta de dados
+│ ├── indicators.py # Indicadores técnicos
+│ ├── signal_engine.py # Geração de sinais
+│ ├── backtest.py # Backtest
+│ ├── ranking.py # Score final
+│ ├── macro.py # Análise macro
+│ ├── fundamental.py # Análise fundamentalista
+│ └── ai_engine.py # IA Generativa
 │
 ├── assets/
-│   └── diagramas.png
+│ └── diagramas.png
 │
 └── examples/
-    └── README.md
-🚀 Setup do Projeto
-1️⃣ Clonar o repositório
+└── README.md
+
+---
+
+## 🚀 Setup do Projeto
+
+### 1. Clonar o repositório
+
+```bash
 git clone https://github.com/seu-usuario/lab-agente-financeiro.git
 cd lab-agente-financeiro
-2️⃣ Criar ambiente virtual
+
+### 2. Criar ambiente virtual
 python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
-3️⃣ Instalar dependências
+
+# Linux/macOS
+source venv/bin/activate
+
+# Windows
+venv\Scripts\activate
+
+### 3. Instalar dependências
 pip install pandas yfinance
+
 📡 Coleta de Dados (B3)
 
 Baixe os últimos 2 anos de dados:
 
 python src/data_fetch.py
 
-✔ Os arquivos serão salvos em:
+Os arquivos serão salvos em:
 
 data/raw/
 ▶️ Execução do Agente
@@ -99,7 +128,7 @@ Execute:
 
 python src/backtest.py
 
-Métricas:
+Métricas analisadas:
 
 Win Rate
 Retorno médio
