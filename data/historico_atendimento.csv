@@ -1,6 +1,11 @@
-data,canal,tema,resumo,resolvido
-2025-09-15,chat,CDB,Cliente perguntou sobre rentabilidade e prazos,sim
-2025-09-22,telefone,Problema no app,Erro ao visualizar extrato foi corrigido,sim
-2025-10-01,chat,Tesouro Selic,Cliente pediu explicação sobre o funcionamento do Tesouro Direto,sim
-2025-10-12,chat,Metas financeiras,Cliente acompanhou o progresso da reserva de emergência,sim
-2025-10-25,email,Atualização cadastral,Cliente atualizou e-mail e telefone,sim
+data,ativo,sinal,contexto,resultado
+2025-01-15,PETR4,COMPRA,Alta do petróleo + TRIX positivo,win
+2025-01-22,VALE3,VENDA,Queda do minério + TRIX negativo,win
+2025-02-03,ITUB4,COMPRA,Fluxo estrangeiro positivo,loss
+2025-02-10,BBDC4,VENDA,Pressão no setor bancário,win
+2025-02-18,WEGE3,COMPRA,Crescimento industrial + tendência forte,win
+2025-03-01,MGLU3,VENDA,Alta volatilidade + tendência de baixa,win
+2025-03-10,ABEV3,COMPRA,Defensiva + suporte técnico,loss
+2025-03-20,PETR4,COMPRA,Continuidade da alta do petróleo,win
+2025-04-02,VALE3,VENDA,China desacelerando,win
+2025-04-15,ITUB4,COMPRA,Resultados positivos trimestrais,win
